@@ -1,13 +1,14 @@
 import React from "react";
- import ListingCard from "./ListingCard";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer({productListings}) {
-  const myListings = productListings.map((listing) => <ListingCard ket={listing.id} item={listing} />)
+function ListingsContainer({ productListings, handleListingDelete, handleListingSort }) {
 
+  const myListings = productListings.map((listing) => <ListingCard key={listing.id} item={listing} onDeleteItem={handleListingDelete}/>)
   return (
     <main>
+      <button onClick={handleListingSort}>Sort listings by locations [A - Z]</button>
       <ul className="cards">
-        {myListings}
+        { myListings }
       </ul>
     </main>
   );
